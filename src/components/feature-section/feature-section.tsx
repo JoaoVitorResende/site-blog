@@ -1,6 +1,3 @@
-import Link from "next/link"
-import { Button } from "../ui/button"
-import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 import { CreateStoreButton } from "../create-store-button"
 
@@ -11,7 +8,7 @@ export const FeatureSection = () => {
                 <span className="text-body-tag text-blue-200 bg-blue-400 px-2 py-1 w-fit rounded-sm uppercase">
                     Simples
                 </span>
-                <h2 className="text-gray-100 text-heading-lg">
+                <h2 className="text-gray-100 text-heading-lg font-sans">
                     Crie um catalago de produtos online em poucos minutos
                 </h2>
             </div>
@@ -19,7 +16,7 @@ export const FeatureSection = () => {
                 <span className="text-body-tag text-blue-200 bg-blue-400 px-2 py-1 w-fit rounded-sm uppercase">
                     Pratico
                 </span>
-                <h2 className="text-gray-100 text-heading-lg">
+                <h2 className="text-gray-100 text-heading-lg font-sans">
                     Venda para seu publico atraves de uma plataforma unica
                 </h2>
             </div>
@@ -31,7 +28,7 @@ export const FeatureSection = () => {
                         <span className="text-body-tag text-blue-200 bg-blue-400 px-2 py-1 w-fit rounded-sm uppercase">
                             Personalizavel
                         </span>
-                        <h2 className="text-gray-100 text-heading-lg">
+                        <h2 className="text-gray-100 text-heading-lg font-sans">
                             Tenha uma loja online personalizada com a cara da sua marca
                         </h2>
                         <CreateStoreButton isSmall={false}/>
