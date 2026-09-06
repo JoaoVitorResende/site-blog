@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Button } from "../ui/button"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
+import { CreateStoreButton } from "../create-store-button"
 
 export const FeatureSection = () => {
     return (
@@ -33,25 +34,14 @@ export const FeatureSection = () => {
                         <h2 className="text-gray-100 text-heading-lg">
                             Tenha uma loja online personalizada com a cara da sua marca
                         </h2>
-                        <Button asChild className="w-fit rounded-full hidden mt-4 md:mt-auto md:flex">
-                            <Link href="/criar-loja">
-                                Criar loja gratis
-                                <ArrowRight />
-                            </Link>
-                        </Button>
+                        <CreateStoreButton isSmall={false}/>
                     </div>
 
                     <div className="flex flex-col items-center justify-center w-full">
                         <div className="w-full max-w-md overflow-hidden">
                              <Image src="./feature-section.svg" alt="IlustrationImage" width={440} height={330} />
                         </div>
-                       
-                         <Button asChild className="w-full gap-2 rounded-full mt-4 md:mt-auto md:hidden">
-                            <Link href="/criar-loja">
-                                Criar loja gratis
-                                <ArrowRight />
-                            </Link>
-                        </Button>
+                         <CreateStoreButton isSmall={true}/>
                     </div>
 
                 </div>

@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { Button } from "../ui/button"
 import { ActiveLink } from "../active-link";
 import { Logo } from "../logo";
