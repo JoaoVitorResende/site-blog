@@ -1,5 +1,5 @@
+import { CreateStoreButton } from "@/components/create-store-button"
 import Image from "next/image"
-import { CreateStoreButton } from "../create-store-button"
 
 export const FeatureSection = () => {
     return (
