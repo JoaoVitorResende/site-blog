@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# contentlayer2
-.contentlayer2
+# contentlayer
+.contentlayer
