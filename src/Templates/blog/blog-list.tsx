@@ -7,8 +7,8 @@ export function BlogList() {
     const router = useRouter();
     const query = router.query.q as string;
     const pageTitle = query
-    ? `Resultados de busca para ${query}`
-    : `Dicas e estrategias para impulsionar seu negocio`
+        ? `Resultados de busca para ${query}`
+        : `Dicas e estrategias para impulsionar seu negocio`
 
     return (
         <div className="flex flex-col py-24 flex-grow h-full">
@@ -23,7 +23,17 @@ export function BlogList() {
                     <Search />
                 </div>
             </header>
-            <PostCard/>
+            <PostCard
+                title="Transformando seu negócio em uma loja virtual"
+                description="Se você está buscando uma maneira simples e eficaz de vender seus produtos online..."
+                date="20/12/2024"
+                slug="transformando"
+                image="/assets/primeiro-post.jpg"
+                author={{
+                    avatar: '/customer-01.png',
+                    name: 'Aspen Dokidis',
+                }}
+            />
         </div>
     )
 }
