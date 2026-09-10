@@ -1,5 +1,7 @@
 import { Avatar } from "@/components/avatar";
+import { Markdown } from "@/components/markdown";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 import { allPosts } from "@/contentlayer";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,12 +40,12 @@ export default function PostPage() {
                             className="object-cover"
                         />
                     </figure>
-                    <header>
-                        <h1 className="mb-6 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
+                    <header className="p-4 md:p-6 lg:p-12 pb-0 mt-8 md:mt-12">
+                        <h1 className="mb-8 text-balance text-heading-lg md:text-heading-xl lg:text-heading-xl">
                             {post?.title}
                         </h1>
                         <Avatar.Container>
-                            <Avatar.Image src={post?.author?.avatar ?? ''} alt={post?.title ?? ''} />
+                            <Avatar.Image src={post?.author?.avatar ?? ''} alt={post?.title ?? ''} size="sm" />
                             <Avatar.Content>
                                 <Avatar.Title>{post?.author?.name}</Avatar.Title>
                                 <Avatar.Description>
@@ -53,7 +55,23 @@ export default function PostPage() {
                             </Avatar.Content>
                         </Avatar.Container>
                     </header>
+
+                    <div className="prose prove-invert max-w-none px-4 mt-12 md:px-6 lg:px-12">
+                        <Markdown content={post?.body.raw ?? ''}/>
+                    </div>
                 </article>
+                <aside className="space-y-6">
+                    <div className="rounder-lg bg-gray-700 p-4 md:p-6">
+                        <h2 className="mb-4 text-heading-xs text-gray-100">Compartilar</h2>
+                        <div className="space-y-3">
+                            {[{key: '1', providerName: 'LinkedIn'}].map((provider) => (
+                                <Button  key={provider.key} variant="outline">
+                                    {provider.providerName}
+                                </Button>
+                            ))}
+                        </div>
+                    </div>
+                </aside>
             </div>
 
         </main>

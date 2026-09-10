@@ -4,7 +4,7 @@ type AvatarTitleProps = {
 
 export const AvatarTitle = ({children}: AvatarTitleProps) =>{
     return(
-        <strong>
+        <strong className=" text-body-sm text-gray-300">
             {children}
         </strong>
     )
