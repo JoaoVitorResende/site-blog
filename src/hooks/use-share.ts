@@ -1,18 +1,26 @@
 import { useCallback, useMemo } from "react"
 import { ShareConfig, SOCIAL_PROVIDERS, SocialProviders } from "./social-providers"
+import { useClipboard } from "./useClipboard"
 type UseShareProps = ShareConfig & {
     clipboardTimeout?: number
 }
 
-export const useShare = ({url, title, text}: UseShareProps) =>{
+export const useShare = ({url, title, text, clipboardTimeout = 2000}: UseShareProps) =>{
+
+    const {isCopied, handleCopy} = useClipboard({timeout: clipboardTimeout})
+
     const shareConfig = useMemo(() => ({
         url,
         ...(title && {title}),
         ...(text && {text}),
     }),[text, title, url])
 
-    const share = useCallback((provider: SocialProviders) => {
+    const share = useCallback(async (provider: SocialProviders) => {
         try{
+            if(provider == 'clipBoard')
+            {
+                return await handleCopy(url)
+            }
             const providerConfig = SOCIAL_PROVIDERS[provider]
             if(!providerConfig){
                 throw new Error (`Provider nao suportado: ${provider}`)
@@ -25,7 +33,7 @@ export const useShare = ({url, title, text}: UseShareProps) =>{
             return false
         }
     
-    }, [shareConfig])
+    }, [shareConfig, handleCopy, url])
 
     const shareButtons = useMemo(() => [
         ...Object.entries(SOCIAL_PROVIDERS).map(([key, provider]) => ({
@@ -33,8 +41,13 @@ export const useShare = ({url, title, text}: UseShareProps) =>{
             name: provider.name,
             icon: provider.icon,
             action: () => share(key as SocialProviders)
-        }))
-    ], [share])
+        })),
+        {
+            provider: 'clipBoard',
+            name: isCopied ? 'Link Copiado' : 'Copiar link',
+            action: () => share("clipBoard")
+        }
+    ], [isCopied,share])
     return {
         shareButtons
     }
