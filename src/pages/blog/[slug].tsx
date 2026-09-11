@@ -65,7 +65,7 @@ export default function PostPage() {
                         <h2 className="mb-4 text-heading-xs text-gray-100">Compartilar</h2>
                         <div className="space-y-3">
                             {[{key: '1', providerName: 'LinkedIn'}].map((provider) => (
-                                <Button  key={provider.key} variant="outline">
+                                <Button  key={provider.key} variant="outline" className="gap-2 w-full justify-start">
                                     {provider.providerName}
                                 </Button>
                             ))}
