@@ -5,6 +5,8 @@ export type ShareConfig = {
     text?: string;
 };
 
+export type SocialProviders = 'linkedin' | 'facebook' | 'slack' | 'twitter' | 'threads'
+
 export const SOCIAL_PROVIDERS = {
     linkedin: {
         name: "Linkedin",

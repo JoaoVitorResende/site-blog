@@ -3,6 +3,7 @@ import { Markdown } from "@/components/markdown";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { allPosts } from "@/contentlayer";
+import { useShare } from "@/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -12,6 +13,12 @@ export default function PostPage() {
     const slug = router.query.slug as string;
     const post = allPosts.find((post) => post.slug.toLowerCase().includes(slug?.toLowerCase() ?? ''));
     const publishedDate = post?.date? new Date(post.date).toLocaleDateString('pt-BR') : '';
+    const postUrl = `https://site.set/blog/${slug}`;
+    const {shareButtons} = useShare({
+        url: postUrl,
+        title: post?.title,
+        text: post?.description
+    })
     return (
         <main className="mt-32 text-gray-100">
             <Breadcrumb>
@@ -64,9 +71,9 @@ export default function PostPage() {
                     <div className="rounder-lg bg-gray-700 p-4 md:p-6">
                         <h2 className="mb-4 text-heading-xs text-gray-100">Compartilar</h2>
                         <div className="space-y-3">
-                            {[{key: '1', providerName: 'LinkedIn'}].map((provider) => (
-                                <Button  key={provider.key} variant="outline" className="gap-2 w-full justify-start">
-                                    {provider.providerName}
+                            {shareButtons.map((provider) => (
+                                <Button  key={provider.provider} onClick={() => provider.action()} variant="outline"  className="gap-2 w-full justify-start">
+                                    {provider.name}
                                 </Button>
                             ))}
                         </div>
