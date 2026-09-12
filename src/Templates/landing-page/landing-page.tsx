@@ -7,7 +7,6 @@ export const LandingPage = () =>{
         <FeatureSection/>
         <SuportSection/>
         <CustomerStorySection/>
-        <CallToAction/>
       </article>
     )
 }
