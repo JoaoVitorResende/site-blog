@@ -17,7 +17,7 @@ export function BlogList({posts}:BlogListProps) {
     : 'Dicas e estratégias para impulsionar seu negócio';
 
   const postsList = query ? posts.filter((post) => post.title.toLowerCase()?.includes(query.toLocaleLowerCase())) : posts;
-  const hasPosts = posts.length > 0;
+  const hasPosts = postsList.length > 0;
 
   return (
     <div className="flex flex-col py-24 flex-grow h-full">
