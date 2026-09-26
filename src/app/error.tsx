@@ -5,7 +5,7 @@ import { AlertTriangle } from "lucide-react";
 
 type ErrorBoundaryProps = {
     error: Error
-    rest: () => void;
+    reset: () => void;
 }
 
 export default function ErrorBoundary({ error, reset }: ErrorBoundaryProps) {
